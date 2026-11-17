@@ -1,0 +1,122 @@
+[
+  {
+    "repo": "pypa/packaging",
+    "start": "df5f9dcbbfe797bbf23691c370348b18531ad7bd",
+    "file": "src/packaging/utils.py",
+    "function": "canonicalize_name",
+    "expected": "ae891fd74d6dd4c6063bb04f2faeadaac6fc6313",
+    "label": "Packaging: layout move, recover name annotation"
+  },
+  {
+    "repo": "pypa/packaging",
+    "start": "df5f9dcbbfe797bbf23691c370348b18531ad7bd",
+    "file": "src/packaging/utils.py",
+    "function": "parse_wheel_filename",
+    "expected": "745bb0a763517a21422e74e936a24b043e8dc225",
+    "label": "Packaging: layout move, recover earlier signature formatting"
+  },
+  {
+    "repo": "pypa/packaging",
+    "start": "40d76fbedf22519d73229bc8c4c6a6dbfddea44e",
+    "file": "src/packaging/_ranges.py",
+    "function": "_base_dev0",
+    "expected": "3f4f5d46808f51709aba8341d4121f20752b3235",
+    "label": "Packaging: function move, recover base-release helper"
+  },
+  {
+    "repo": "pypa/packaging",
+    "start": "40d76fbedf22519d73229bc8c4c6a6dbfddea44e",
+    "file": "src/packaging/_ranges.py",
+    "function": "_range_is_empty",
+    "expected": "3f4f5d46808f51709aba8341d4121f20752b3235",
+    "label": "Packaging: function move, recover empty-range helper"
+  },
+  {
+    "repo": "pypa/packaging",
+    "start": "668da8662a112036e4850b68980790cb2d10dae9",
+    "file": "src/packaging/markers.py",
+    "function": "_format_full_version",
+    "expected": "2c885fe91a54559e2382902dce28428ad2887be5",
+    "label": "Packaging: rename, recover earlier formatting change"
+  },
+  {
+    "repo": "pypa/packaging",
+    "start": "664f049980f1873c458de72a449003b83173f445",
+    "file": "src/packaging/_ranges.py",
+    "function": "coerce_version",
+    "expected": "40d76fbedf22519d73229bc8c4c6a6dbfddea44e",
+    "label": "Packaging: rename while another old definition disappears"
+  },
+  {
+    "repo": "pypa/packaging",
+    "start": "d2ac6ba3f819cb5c81d79f4820db205d6f8bc126",
+    "file": "src/packaging/utils.py",
+    "function": "parse_wheel_filename",
+    "expected": "c5b253b24ba5d4c242a73ff19b02ef0833ba5859",
+    "label": "Packaging: same-location edit, recover invalid-tag handling"
+  },
+  {
+    "repo": "pypa/packaging",
+    "start": "84833cc16be84bc7f1d9f64e2818afe0dd48aade",
+    "file": "src/packaging/utils.py",
+    "function": "parse_sdist_filename",
+    "expected": "84833cc16be84bc7f1d9f64e2818afe0dd48aade",
+    "label": "Packaging: same-location edit, reject empty names"
+  },
+  {
+    "repo": "pypa/packaging",
+    "start": "0625596e502163179b9a82796aee82c178efc16d",
+    "file": "src/packaging/utils.py",
+    "function": "parse_wheel_filename",
+    "expected": "0625596e502163179b9a82796aee82c178efc16d",
+    "label": "Packaging: regex behavior change outside the function"
+  },
+  {
+    "repo": "pallets/click",
+    "start": "079f91a2396c5c9264f34f95894259b7b15eb89c",
+    "file": "src/click/utils.py",
+    "function": "echo",
+    "expected": "970364db257039bd5fbf3ffabfba1c183e7c97ac",
+    "label": "Click: layout move, recover bytes support"
+  },
+  {
+    "repo": "pallets/click",
+    "start": "3630addf538ff4d1d5bc75438c8d84378105d03d",
+    "file": "src/click/shell_completion.py",
+    "function": "split_arg_string",
+    "expected": "0103c9570650daa59560baf42ad0a27e57b3157f",
+    "label": "Click: function move, recover earlier type annotations"
+  },
+  {
+    "repo": "pallets/click",
+    "start": "7a0a3447f6ddd2c15438c5d098e289323f9f9556",
+    "file": "src/click/utils.py",
+    "function": "_make_default_short_help",
+    "expected": "790ebd665ce03f25990e037b3e9f16951a2723aa",
+    "label": "Click: rename, recover earlier docstring change"
+  },
+  {
+    "repo": "pallets/click",
+    "start": "7a0a3447f6ddd2c15438c5d098e289323f9f9556",
+    "file": "src/click/utils.py",
+    "function": "_safecall",
+    "expected": "ec258fef824347e61bd563e8d194ee726224e453",
+    "label": "Click: rename with docstring edit, recover earlier typing change"
+  },
+  {
+    "repo": "pallets/click",
+    "start": "f67c2bb6c2f055c1c7a57cd46c3697fc26a7742e",
+    "file": "src/click/utils.py",
+    "function": "_make_default_short_help",
+    "expected": "f67c2bb6c2f055c1c7a57cd46c3697fc26a7742e",
+    "label": "Click: same-location edit, recover abbreviation handling"
+  },
+  {
+    "repo": "pallets/click",
+    "start": "051bb0f30b545cf7426deef819811815297c2798",
+    "file": "src/click/utils.py",
+    "function": "echo",
+    "expected": "4d3db84b251518e97299a38a5ca4bab3d01873a2",
+    "label": "Click: same-location edit, recover empty-bytes handling"
+  }
+]

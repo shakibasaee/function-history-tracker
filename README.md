@@ -1,33 +1,27 @@
 # Function History Tracker
 
-Find the commits that changed a function in a local Git repository. The report shows up to five commits, with the commit subject, the function diff, and test files changed in the same commit.
+Find the commits that changed a function in a local Git repository, even after a Python function was renamed or moved. See the function diff, evidence for each match, and test files changed in the same commit.
 
-## Requirements
+## One-minute demo
 
-- Python 3.9 or later
-- Git available on your command path
-
-The tracker uses Python's standard library and runs locally.
-
-## Run the demo
-
-From the tracker checkout, clone the bundled demo into a new directory and run the tracker:
+From a fresh tracker checkout with Python 3.9+ and Git, run:
 
 ```sh
 git clone delivery-demo.bundle delivery-demo
-python trace_history.py ./delivery-demo shipping.py estimate_delivery
+python trace_history.py ./delivery-demo fulfillment.py calculate_delivery_date
 ```
 
-The bundle preserves the demo's three original commits. If you already have the demo checked out in `delivery-demo`, start with the Python command.
+The function once lived at `shipping.py::estimate_delivery`. v1 finds the move commit. v2 follows the old name and file to find the earlier switch from calendar days to weekdays and the original implementation.
 
-The report starts with `b3c4d1c`, where delivery switched from calendar days to weekdays and `tests/test_shipping.py` was added. It then shows `237fc5c`, where the function was introduced. The README-only commit is excluded.
-
-To verify the demo tests:
-
-```sh
-cd delivery-demo
-python -B -m unittest discover -s tests -v
+```text
+3452a15  Move delivery date calculation into fulfillment
+         shipping.py::estimate_delivery → fulfillment.py::calculate_delivery_date
+         Exact syntax-tree match after ignoring the function name
+b3c4d1c  Count only weekdays when estimating delivery
+237fc5c  Estimate delivery in calendar days
 ```
+
+See the [evaluation report](evaluation/README.md) for 15 reproducible cases from Click and Packaging, including misses.
 
 ## Trace a function in your own repository
 
@@ -35,6 +29,18 @@ python -B -m unittest discover -s tests -v
 python trace_history.py path/to/repository path/to/file.py function_name
 ```
 
-Use a file path relative to the target repository's root. The tracker starts at `HEAD`, so the file and function need to exist in the current commit. Function detection depends on Git's `git log -L` matching rules. History across function renames or moves between files falls outside this release's supported scope.
+Use a file path relative to the target repository's root. The tracker uses Python's standard library and reports up to five commits starting from the function at `HEAD`.
+
+For top-level Python functions, the tracker follows the first parent to detect moves and uses Git line history to recover changes introduced through merges. When a definition disappears, it compares the removed definitions in changed Python files with the new definition. The report shows the old and new locations and either an exact syntax-tree match or a similarity score. Comparisons ignore the function name and formatting.
+
+For longer definitions, approximate matching can follow a rename with a small code edit. It requires at least 15 syntax-tree nodes on each side and a score of at least 90%. Exact matches take priority. If multiple matches of the same kind are within five percentage points of the top score, the report lists them and stops at that commit. The score measures similarity in the code structure. Other inputs use Git's `git log -L` matching rules.
 
 The test list uses common directory and filename conventions. It shows which test files changed in the same commit. Use the diff and commit subject to interpret the change.
+
+## Run the tracker tests
+
+```sh
+python -B -m unittest discover -s tests -v
+```
+
+GitHub Actions runs the suite on pushes and pull requests on Linux and Windows.
